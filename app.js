@@ -41,3 +41,7 @@ sails.lift(sailsAppConfig, (err) => {
 
   console.log('Sails.js está levantado y listo para recibir solicitudes');
 });
+// //MI BASE DE DATOS
+require('dotenv').config();
+const databaseURL = process.env.DATABASE_URL;
+console.log(`La URL de la base de datos es: ${databaseURL}`);
