@@ -56,11 +56,11 @@ const databaseURL = process.env.DATABASE_URL;
 // Parsear la cadena de conexión para obtener los componentes necesarios
 const parsedURL = new URL(databaseURL);
 const connectionConfig = {
-  host: parsedURL.hostname,
-  user: parsedURL.username,
-  password: parsedURL.password,
-  database: parsedURL.pathname.substr(1),
-  port: parsedURL.port,
+  host: 'localhost',
+  user: 'Lorenzo',
+  password:'arturomesaredonda',
+  database: 'mi_bdd',
+  port: 3306,
 };
 
 // Crear la conexión a MySQL
