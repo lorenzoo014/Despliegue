@@ -2,13 +2,13 @@
   "name": "despliegue",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
-  },
+  } ,
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "hapi": "^18.1.0",
     "sails": "^1.5.9"
