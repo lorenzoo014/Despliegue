@@ -45,20 +45,47 @@ sails.lift(sailsAppConfig, (err) => {
 //------------------El codigo que voy a proporcionar a continuacion es un codigo cuya unica finalidad---------------//
 //------------------es verificar la correcta conexion entre la variable de entorno y la aplicacion------------------//
 //-----------------------------------------------------------------------------------------------------------------//
+const mysql = require('mysql2');
+
 // Cargar variables de entorno desde el archivo .env
 require('dotenv').config();
 
 // Acceder a la variable de entorno DATABASE_URL
 const databaseURL = process.env.DATABASE_URL;
 
-// Establecer conexión a la base de datos (depende del paquete que estés usando)
-const mongoose = require('mongoose');
-mongoose.connect(databaseURL, { useNewUrlParser: true, useUnifiedTopology: true });
+// Parsear la cadena de conexión para obtener los componentes necesarios
+const parsedURL = new URL(databaseURL);
+const connectionConfig = {
+  host: parsedURL.hostname,
+  user: parsedURL.username,
+  password: parsedURL.password,
+  database: parsedURL.pathname.substr(1),
+  port: parsedURL.port,
+};
 
-// Verificar si la conexión fue exitosa
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
-db.once('open', () => {
-  console.log('Conexión exitosa a la base de datos');
+// Crear la conexión a MySQL
+const connection = mysql.createConnection(connectionConfig);
+
+// Intentar conectar a la base de datos
+connection.connect((err) => {
+  if (err) {
+    console.error('Error al conectar a la base de datos:', err);
+    return;
+  }
+
+  console.log('Conexión exitosa a la base de datos MySQL');
+
+  // Realizar operaciones adicionales aquí si es necesario
+
+  // Cerrar la conexión cuando hayas terminado
+  connection.end((endErr) => {
+    if (endErr) {
+      console.error('Error al cerrar la conexión:', endErr);
+    } else {
+      console.log('Conexión cerrada correctamente');
+    }
+  });
 });
+
+
 
