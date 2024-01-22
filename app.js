@@ -41,7 +41,24 @@ sails.lift(sailsAppConfig, (err) => {
 
   console.log('Sails.js está levantado y listo para recibir solicitudes');
 });
-// //MI BASE DE DATOS
+//----------------------------------------MI BASE DE DATOS---------------------------------------------------------//
+//------------------El codigo que voy a proporcionar a continuacion es un codigo cuya unica finalidad---------------//
+//------------------es verificar la correcta conexion entre la variable de entorno y la aplicacion------------------//
+//-----------------------------------------------------------------------------------------------------------------//
+// Cargar variables de entorno desde el archivo .env
 require('dotenv').config();
+
+// Acceder a la variable de entorno DATABASE_URL
 const databaseURL = process.env.DATABASE_URL;
-console.log(`La URL de la base de datos es: ${databaseURL}`);
+
+// Establecer conexión a la base de datos (depende del paquete que estés usando)
+const mongoose = require('mongoose');
+mongoose.connect(databaseURL, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Verificar si la conexión fue exitosa
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
+db.once('open', () => {
+  console.log('Conexión exitosa a la base de datos');
+});
+
