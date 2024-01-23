@@ -6,13 +6,13 @@ fs.emptyDirSync('public');
 
 // Compilar el código fuente (esto puede variar según el entorno)
 try {
-  execSync('tu_comando_de_compilacion', { stdio: 'inherit' });
+  execSync('', { stdio: 'inherit' });
 } catch (error) {
   console.error('Error durante la compilación:', error);
   process.exit(1);
 }
 
 // Copiar archivos estáticos al directorio 'public'
-fs.copySync('ruta_fuente', 'public');
+fs.copySync('\Users\Lorenzo\Documents\Programacion_IV\1.Aprendizaje automatico\Practicas\Despliegue\public', 'public');
 
 console.log('¡La construcción se completó exitosamente!');
