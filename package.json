@@ -21,7 +21,10 @@
   "author": "",
   "license": "ISC",
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
