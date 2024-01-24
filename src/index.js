@@ -25,6 +25,3 @@ const root = document.getElementById('root');
 // Utiliza createRoot en lugar de ReactDOM.render
 const rootInstance = createRoot(root);
 rootInstance.render(<App />);
-
-
-
