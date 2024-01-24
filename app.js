@@ -41,3 +41,76 @@ sails.lift(sailsAppConfig, (err) => {
 
   console.log('Sails.js está levantado y listo para recibir solicitudes');
 });
+//----------------------------------------MI BASE DE DATOS---------------------------------------------------------//
+//------------------El codigo que voy a proporcionar a continuacion es un codigo cuya unica finalidad---------------//
+//------------------es verificar la correcta conexion entre la variable de entorno y la aplicacion------------------//
+//-----------------------------------------------------------------------------------------------------------------//
+const mysql = require('mysql2');
+
+// Cargar variables de entorno desde el archivo .env
+require('dotenv').config();
+
+// Acceder a la variable de entorno DATABASE_URL
+const databaseURL = process.env.DATABASE_URL;
+
+// Parsear la cadena de conexión para obtener los componentes necesarios
+const parsedURL = new URL(databaseURL);
+const connectionConfig = {
+  host: 'localhost',
+  user: 'Lorenzo',
+  password:'arturomesaredonda',
+  database: 'mi_bdd',
+  port: 3306,
+};
+
+// Crear la conexión a MySQL
+const connection = mysql.createConnection(connectionConfig);
+
+
+// Intentar conectar a la base de datos
+connection.connect((err) => {
+  if (err) {
+    console.error('Error al conectar a la base de datos:', err);
+    return;
+  }
+
+  console.log('Conexión exitosa a la base de datos MySQL');
+
+  // Realizar operaciones adicionales aquí si es necesario
+
+  // Cerrar la conexión cuando hayas terminado
+  connection.end((endErr) => {
+    if (endErr) {
+      console.error('Error al cerrar la conexión:', endErr);
+    } else {
+      console.log('Conexión cerrada correctamente');
+    }
+  });
+});
+//-------------------------------------------------------------//
+//---------------Para comunicarme con el backend---------------//
+//-------------------------------------------------------------//
+const startMLflowScript = async () => {
+  try {
+      const response = await fetch('http://localhost:5000/start_mlflow_script', {
+          method: 'POST',  // Asegúrate de utilizar el método POST aquí
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+  } catch (error) {
+      console.error('Error starting MLflow script:', error);
+  }
+};
+
+// Llama a esta función cuando desees iniciar el script de MLflow desde tu aplicación.
+startMLflowScript();
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Lorenzo/Documents/Programacion_IV/1.Aprendizaje%20automatico/Practicas/Despliegue/mlruns/0/fd5d8d485a5145a7a7de0bb2dde1e340/artifacts
+end_time: 1706111610253
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fd5d8d485a5145a7a7de0bb2dde1e340
+run_name: enthused-gnu-824
+run_uuid: fd5d8d485a5145a7a7de0bb2dde1e340
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706111603139
+status: 3
+tags: []
+user_id: Lorenzo
