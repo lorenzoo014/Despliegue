@@ -13,6 +13,6 @@ try {
 }
 
 // Copiar archivos estáticos al directorio 'public'
-fs.copySync('\Users\Lorenzo\Documents\Programacion_IV\1.Aprendizaje automatico\Practicas\Despliegue\public', 'public');
+fs.copySync('/Users/Lorenzo/Documents/Programacion_IV/1.Aprendizaje automatico/Practicas/Despliegue/public', 'public');
 
 console.log('¡La construcción se completó exitosamente!');

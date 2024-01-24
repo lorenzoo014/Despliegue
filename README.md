@@ -8,3 +8,12 @@ Posibles comandos para el package.json
 #------------URL de la bdd--------------#
 mysql://Lorenzo:arturomesaredonda@localhost:3306/mibdd
 #--------------#
+
+const { render, screen } = require('@testing-library/react');
+const App = require('../src/index').default;
+
+test('renderiza la aplicación correctamente', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/hola, mundo/i);
+  expect(linkElement).toBeInTheDocument();
+});
