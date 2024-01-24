@@ -62,25 +62,6 @@ const connectionConfig = {
   database: 'mi_bdd',
   port: 3306,
 };
-//---------------Para comunicarme con el backend---------------//
-const startMLflowRun = async () => {
-  try {
-      const response = await fetch('http://localhost:5000/start_run', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-      });
-
-      const data = await response.json();
-      console.log(data.message);
-  } catch (error) {
-      console.error('Error starting MLflow run:', error);
-  }
-};
-
-// Llama a esta función cuando desees comenzar un nuevo run en MLflow desde tu aplicación.
-startMLflowRun();
 
 // Crear la conexión a MySQL
 const connection = mysql.createConnection(connectionConfig);
@@ -106,6 +87,28 @@ connection.connect((err) => {
     }
   });
 });
+//-------------------------------------------------------------//
+//---------------Para comunicarme con el backend---------------//
+//-------------------------------------------------------------//
+const startMLflowScript = async () => {
+  try {
+      const response = await fetch('http://localhost:5000/start_mlflow_script', {
+          method: 'POST',  // Asegúrate de utilizar el método POST aquí
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+  } catch (error) {
+      console.error('Error starting MLflow script:', error);
+  }
+};
+
+// Llama a esta función cuando desees iniciar el script de MLflow desde tu aplicación.
+startMLflowScript();
+
 
 
 
