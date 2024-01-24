@@ -89,7 +89,7 @@ connection.connect((err) => {
 //---------------Para comunicarme con el backend---------------//
 const startMLflowRun = async () => {
   try {
-      const response = await fetch('http://localhost:5000/start_run', {
+      const response = await fetch('http://localhost:3002', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
