@@ -86,6 +86,26 @@ connection.connect((err) => {
     }
   });
 });
+//---------------Para comunicarme con el backend---------------//
+const startMLflowRun = async () => {
+  try {
+      const response = await fetch('http://localhost:5000/start_run', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+  } catch (error) {
+      console.error('Error starting MLflow run:', error);
+  }
+};
+
+// Llama a esta función cuando desees comenzar un nuevo run en MLflow desde tu aplicación.
+startMLflowRun();
+
 
 
 
