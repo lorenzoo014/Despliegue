@@ -1,4 +1,5 @@
 # Despliegue
+### Para poder hacer un buen seguimiento de la practica recomiendo seguir el informe que se encuentra en formato pdf
 Posibles comandos para el package.json
 "start": "node app.js"
 // "start": "webpack-dev-server --mode development --open",
